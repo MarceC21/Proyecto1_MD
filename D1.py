@@ -86,3 +86,7 @@ def equivalentes(expr1, expr2):
 
 def inferencia(expr):
     pass
+
+
+
+#Menú
