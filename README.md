@@ -67,6 +67,11 @@ Ingrese la segunda expresión: not a or b
 Las expresiones son lógicamente equivalentes
 
 
+### **3. Inferencias**
+Seleccione una opción del menú: 4
+Ingrese una expresión para realizar la inferencia: a or b = 0
+[False, False]
+
 ## Restricciones
 
 * Solo se permiten variables proposicionales de una letra en minúscula (`a` a `z`).

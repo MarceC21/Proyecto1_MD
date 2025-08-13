@@ -139,7 +139,6 @@ def equivalentes(expr1, expr2):
 def inferencia(expr):
     #Para evitar espacios
     expr = expr.strip()
-    print("DEBUG: expresión recibida ->", expr)  # para depurar
     # Revisar que tenga el signo "="
     if "=" not in expr:
         return []

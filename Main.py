@@ -42,8 +42,7 @@ while n != 5:
                 print("Las expresiones NO son equivalentes")
 
     elif n == 4:
-        print("Función para realizar inferencia")
-        inf= input("Ingrese la expresión:  ")
+        inf= input("Ingrese una expresión para realizar la inferencia: ")
         resultado= inferencia(inf)
         print(resultado)
 
