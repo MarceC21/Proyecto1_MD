@@ -34,7 +34,12 @@ while n != 5:
                 print("NO es una tautología")
 
     elif n == 3:
-        print("Función para verificar equivalencias")
+        expr1 = input("Ingrese la primera expresión: ")
+        expr2 = input("Ingrese la segunda expresión: ")
+            if equivalentes(expr1, expr2):
+                print("Las expresiones son lógicamente equivalentes")
+            else:
+                print("Las expresiones NO son equivalentes")
 
     elif n == 4:
         print("Función para realizar inferencia")
