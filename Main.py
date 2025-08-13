@@ -1,7 +1,7 @@
 #Menú
 
 #Se importan las funciones de D1 a utilizar 
-from D1 import tabla_verdad, tautologia
+from D1 import tabla_verdad, tautologia, equivalentes
 
 n = 0
 while n != 5:
@@ -28,17 +28,17 @@ while n != 5:
 
     elif n == 2:
         expr = input("Ingrese una expresion para ver si es una tautología: ")
-            if tautologia(expr):
+        if tautologia(expr):
                 print("SI es una tautología. :)")
-            else:
+        else:
                 print("NO es una tautología")
 
     elif n == 3:
         expr1 = input("Ingrese la primera expresión: ")
         expr2 = input("Ingrese la segunda expresión: ")
-            if equivalentes(expr1, expr2):
+        if equivalentes(expr1, expr2):
                 print("Las expresiones son lógicamente equivalentes")
-            else:
+        else:
                 print("Las expresiones NO son equivalentes")
 
     elif n == 4:
