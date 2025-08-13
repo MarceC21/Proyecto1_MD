@@ -42,10 +42,12 @@ while n != 5:
                 print("Las expresiones NO son equivalentes")
 
     elif n == 4:
-        inf= input("Ingrese una expresión para realizar la inferencia: ")
-        resultado= inferencia(inf)
-        print(resultado)
-
+        try:
+            inf = input("Ingrese una expresión para realizar la inferencia: ")
+            resultado = inferencia(inf)
+            print(resultado)
+        except Exception:
+            print("⚠ Error: expresión no válida.")
     elif n == 5:
         print("Saliendo del programa...")
 

@@ -93,7 +93,7 @@ def tautologia(expr):
     for fila in tabla:
         if fila [-1] is not True: #si hay una Falsa, no es taut
             return False
-        return True #en caso deonde no hay false
+    return True #en caso deonde no hay false
 
 # Función: equivalentesif 
 # Esta función determina si expr1 es equivalente a expr2, devuelve True;
@@ -137,32 +137,41 @@ def equivalentes(expr1, expr2):
 # Salida: lista de listas.
 
 def inferencia(expr):
-    #Para evitar espacios
-    expr = expr.strip()
-    # Revisar que tenga el signo "="
-    if "=" not in expr:
+    try:
+        #Para evitar espacios
+        expr = expr.strip()
+        # Revisar que tenga el signo "="
+        if "=" not in expr:
+            print("Error. La expresión debe contener '='. Vuelva a intentarlo")
+            return []
+        
+        #Separar proposición y la igualdad (valor 0 o 1)
+        partes = expr.split("=") #Se separa justo en el =
+        proposicion = partes[0].strip() 
+        valor = partes[1].strip() 
+
+        #Revisar que este bien igualado
+        if valor not in ["0", "1"]:
+            print("Error: el valor debe ser 0 o 1.")
+            return []
+        
+        # Convertir valor esperado a booleano
+        if valor == "1":
+            valor_esperado = True
+        else:
+            valor_esperado = False
+
+        # Obtener tabla de verdad
+        tabla = tabla_verdad(proposicion)
+
+        # Filtrar las filas que cumplen la condición
+        resultados = []
+        for fila in tabla:
+            if fila[-1] == valor_esperado:
+                resultados.append(fila[:-1])
+        return resultados
+    
+    except Exception:
+        print("Error: expresión no válida.")
         return []
-
-    #Separar proposición y la igualdad (valor 0 o 1)
-    partes = expr.split("=") #Se separa justo en el =
-    proposicion = partes[0].strip() 
-    valor = partes[1].strip() 
-
-    # Convertir valor esperado a booleano
-    if valor == "1":
-        valor_esperado = True
-    else:
-        valor_esperado = False
-
-    # Obtener tabla de verdad
-    tabla = tabla_verdad(proposicion)
-
-    # Filtrar las filas que cumplen la condición
-    resultados = []
-    for fila in tabla:
-        if fila[-1] == valor_esperado:
-            resultados.append(fila[:-1])
-
-    return resultados
-
 
