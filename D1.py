@@ -132,13 +132,38 @@ def equivalentes(expr1, expr2):
 
 
 # Función: inferencia
-# Esta función determina los valores de verdad para una valuación de una proposición dada.
+# Esta función determina los valores de verdad para una evaluación de una proposición dada.
 # Entrada: expresión.
 # Salida: lista de listas.
 
 def inferencia(expr):
-    pass
+    #Para evitar espacios
+    expr = expr.strip()
+    print("DEBUG: expresión recibida ->", expr)  # para depurar
+    # Revisar que tenga el signo "="
+    if "=" not in expr:
+        return []
+
+    #Separar proposición y la igualdad (valor 0 o 1)
+    partes = expr.split("=") #Se separa justo en el =
+    proposicion = partes[0].strip() 
+    valor = partes[1].strip() 
+
+    # Convertir valor esperado a booleano
+    if valor == "1":
+        valor_esperado = True
+    else:
+        valor_esperado = False
+
+    # Obtener tabla de verdad
+    tabla = tabla_verdad(proposicion)
+
+    # Filtrar las filas que cumplen la condición
+    resultados = []
+    for fila in tabla:
+        if fila[-1] == valor_esperado:
+            resultados.append(fila[:-1])
+
+    return resultados
 
 
-
-#Menú

@@ -1,7 +1,7 @@
 #Menú
 
 #Se importan las funciones de D1 a utilizar 
-from D1 import tabla_verdad, tautologia, equivalentes
+from D1 import tabla_verdad, tautologia, equivalentes, inferencia
 
 n = 0
 while n != 5:
@@ -43,6 +43,9 @@ while n != 5:
 
     elif n == 4:
         print("Función para realizar inferencia")
+        inf= input("Ingrese la expresión:  ")
+        resultado= inferencia(inf)
+        print(resultado)
 
     elif n == 5:
         print("Saliendo del programa...")
