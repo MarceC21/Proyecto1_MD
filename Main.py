@@ -1,7 +1,7 @@
 #Menú
 
 #Se importan las funciones de D1 a utilizar 
-from D1 import tabla_verdad
+from D1 import tabla_verdad, tautologia
 
 n = 0
 while n != 5:
@@ -27,7 +27,11 @@ while n != 5:
             print(fila)
 
     elif n == 2:
-        print("Función para verificar tautología")
+        expr = input("Ingrese una expresion para ver si es una tautología: ")
+            if tautologia(expr):
+                print("SI es una tautología. :)")
+            else:
+                print("NO es una tautología")
 
     elif n == 3:
         print("Función para verificar equivalencias")
