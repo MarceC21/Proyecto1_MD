@@ -22,7 +22,9 @@ while n != 5:
 
     if n == 1:
         inst = input("Escriba una expresión: ")
-        tabla_verdad(inst)
+        tabla = tabla_verdad(inst)
+        for fila in tabla:
+            print(fila)
 
     elif n == 2:
         print("Función para verificar tautología")

@@ -61,7 +61,25 @@ def extract_variables(expression):
 # Salida: tabla de verdad como una lista de listas.
 
 def tabla_verdad(expr):
-    pass
+    # Extrae las variables proposicionales de la expresión (letras minúsculas)
+    variables = extract_variables(expr)
+    n = len(variables) 
+    tabla = []
+    # Recorre todas las combinaciones posibles (2^n)
+    for i in range(2 ** n):
+        # Genera la combinación de valores de verdad para las variables usando operaciones de bits
+        valores = [(i >> j) & 1 == 1 for j in reversed(range(n))]
+        # Crea un diccionario que asigna cada variable a su valor de verdad
+        contexto = dict(zip(variables, valores))
+        try:
+            # Evalúa la expresión lógica usando los valores actuales de las variables
+            resultado = eval(expr, {"implies": implies, "iff": iff}, contexto)
+        except Exception:
+            resultado = None
+        # Agrega la fila a la tabla: valores de las variables + resultado de la expresión
+        fila = valores + [resultado]
+        tabla.append(fila)
+    return tabla
 
 # Función: tautologia
 # Esta función determina si la expresión es una tautología, devuelve True;
