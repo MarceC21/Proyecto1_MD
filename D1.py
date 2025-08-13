@@ -101,7 +101,35 @@ def tautologia(expr):
 # Entrada: expresión 1 y expresión 2.
 # Salida: booleano.
 def equivalentes(expr1, expr2):
-    pass
+    
+    # Extraer variables de ambas expresiones
+    vars1 = set(extract_variables(expr1))
+    vars2 = set(extract_variables(expr2))
+
+    # Si los conjuntos de variables no son iguales, no pueden ser equivalentes
+    if vars1 != vars2:
+        return False
+
+    # Ordenar las variables en orden ascendente
+    variables = sorted(vars1)
+    n = len(variables)
+
+    # Probar todas las combinaciones posibles de valores
+    for i in range(2 ** n):
+        valores = [(i >> j) & 1 == 1 for j in reversed(range(n))]
+        contexto = dict(zip(variables, valores))
+
+        try:
+            r1 = eval(expr1, {"implies": implies, "iff": iff}, contexto)
+            r2 = eval(expr2, {"implies": implies, "iff": iff}, contexto)
+        except Exception:
+            return False  # En caso de error de sintaxis o evaluación
+
+        if r1 != r2:
+            return False  # En al menos una combinación difieren
+
+    return True  # Todas las combinaciones coinciden
+
 
 # Función: inferencia
 # Esta función determina los valores de verdad para una valuación de una proposición dada.
