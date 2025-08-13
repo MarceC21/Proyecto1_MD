@@ -87,9 +87,15 @@ def tabla_verdad(expr):
 # Entrada: expresión.
 # Salida: booleano.
 def tautologia(expr):
-    pass
+    #tabla de vdd del expresión ingresado
+    tabla = tabla_verdad(expr)
+    #Last elememt of each table is the result 
+    for fila in tabla:
+        if fila [-1] is not True: #si hay una Falsa, no es taut
+            return False
+        return True #en caso deonde no hay false
 
-# Función: equivalentes
+# Función: equivalentesif 
 # Esta función determina si expr1 es equivalente a expr2, devuelve True;
 # en caso contrario, devuelve False.
 # Entrada: expresión 1 y expresión 2.
